@@ -9,7 +9,8 @@ class HelloNameApp(App):
 
     @on(Input.Changed)
     def add_name(self, event: Input.Changed) -> None:
-        self.query_one(Label).update(f"Hello, {event.value}!")
+        text = f"Hello, {event.value}!" if event.value != "" else ""
+        self.query_one(Label).update(text)
 
 def main():
     app = HelloNameApp()
